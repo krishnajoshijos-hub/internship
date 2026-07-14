@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Form</title>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- jQuery Validation Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js"></script>
+</head>
+<body>
+
+<form id="frm">
+
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>
+                <input type="text" name="myname">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Email</td>
+            <td>
+                <input type="text" name="myEmail">
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Submit">
+            </td>
+        </tr>
+
+    </table>
+
+</form>
+
+<script>
+
+$(document).ready(function(){
+
+    $("#frm").validate({
+
+        rules:{
+
+            myname:{
+                required:true,
+                minlength:3
+            },
+
+            myEmail:{
+                required:true,
+                email:true
+            }
+
+        },
+
+        messages:{
+
+            myname:{
+                required:"Enter your name",
+                minlength:"Minimum 3 characters"
+            },
+
+            myEmail:{
+                required:"Enter your email",
+                email:"Enter valid email"
+            }
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

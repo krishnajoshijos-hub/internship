@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+
+    <style>
+        form{
+            width:30%;
+            margin:auto;
+            margin-top:200px;
+            font-family:'Courier New', Courier, monospace;
+            border:1px solid black;
+            padding:20px;
+        }
+
+        input{
+            width:100%;
+            padding:8px;
+            margin-top:5px;
+            margin-bottom:15px;
+        }
+
+        .btn{
+            width:100%;
+            padding:10px;
+            font-size:18px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<form onsubmit="return validate()">
+
+    <label>User Name</label><br>
+    <input type="text" id="n1" placeholder="Enter Username">
+
+    <label>Password</label><br>
+    <input type="password" id="n2" placeholder="Enter Password">
+
+    <input class="btn" type="submit" value="Submit">
+
+</form>
+
+<script>
+
+function validate(){
+
+    let n1 = document.getElementById("n1").value;
+    let n2 = document.getElementById("n2").value;
+    m ='';  
+    if(n1==' '){
+        // alert("Enter the username.")
+        m="Enter the username"
+        document.write('msg').innerHTML=m;
+
+        }
+        else if(n2==''){
+            m="ENter the password"
+           // alert("enter the Password");
+        }else{
+            m="succes";
+           // alert("Succes");
+
+        }
+    
+
+    alert("Username : " + n1);
+    alert("Password : " + n2);
+
+    return false;   // Page reload nahi hoga
+
+}
+
+</script>
+
+</body>
+</html>

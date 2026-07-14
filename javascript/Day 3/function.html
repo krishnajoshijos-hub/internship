@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery addClass removeClass</title>
+
+    <style>
+        .box{
+            width:200px;
+            height:100px;
+            background:lightgray;
+            margin:20px;
+            line-height:100px;
+            text-align:center;
+        }
+
+        .red{
+            background:red;
+        }
+
+        .whiteText{
+            color:white;
+        }
+
+        .round{
+            border-radius:20px;
+        }
+
+        .shadow{
+            box-shadow:0 0 10px black;
+        }
+
+        .bigText{
+            font-size:24px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">Hello</div>
+
+<button id="add">Add Class</button>
+<button id="remove">Remove Class</button>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+
+$("#add").click(function(){
+
+    $(".box").addClass("red whiteText round shadow bigText");
+
+});
+
+$("#remove").click(function(){
+
+    $(".box").removeClass("red whiteText round shadow bigText");
+
+});
+
+</script>
+
+</body>
+</html>

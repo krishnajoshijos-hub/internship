@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+    <h1>Stop Watch</h1>
+
+    <div id="sw">00 : 00 : 00</div>
+
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="reset">Reset</button>
+    <button id="lap">Lap</button>
+
+    <ul id="laps"></ul>
+
+<script>
+$(document).ready(function () {
+
+    let hh = 0;
+    let mm = 0;
+    let ss = 0;
+    let timer;
+
+    function updates() {
+
+        ss++;
+
+        if (ss >= 60) {
+            mm++;
+            ss = 0;
+        }
+
+        if (mm >= 60) {
+            hh++;
+            mm = 0;
+        }
+
+        $('#sw').text(hh + " : " + mm + " : " + ss);
+    }
+
+    $('#start').click(function () {
+
+        clearInterval(timer);          // Multiple intervals se bachne ke liye
+        timer = setInterval(updates, 1000);
+
+    });
+
+    $('#stop').click(function () {
+
+        clearInterval(timer);
+
+    });
+
+    $('#reset').click(function () {
+
+        clearInterval(timer);
+
+        hh = 0;
+        mm = 0;
+        ss = 0;
+
+        $('#sw').text(hh + " : " + mm + " : " + ss);
+
+        // $('#laps').empty();      // Sare laps remove kar dega
+        $('#laps').children('li').remove();
+
+    });
+
+    $('#lap').click(function () {
+
+        $('#laps').append(`<li>Lap - ${hh} : ${mm} : ${ss}</li>`);
+
+    });
+
+});
+</script>
+
+</body>
+</html>

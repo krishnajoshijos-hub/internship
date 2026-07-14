@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="myForm">
+
+    Name:
+    <input type="text" id="name"><br><br>
+
+    Email:
+    <input type="text" id="email"><br><br>
+
+    Age:
+    <input type="number" id="age"><br><br>
+
+    Password:
+    <input type="password" id="password"><br><br>
+
+    Confirm Password:
+    <input type="password" id="confirm"><br><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<p id="msg"></p>
+<script>
+$(document).ready(function(){
+
+    $("#myForm").submit(function(e){
+
+        e.preventDefault();
+
+        let name = $("#name").val().trim();
+        let email = $("#email").val().trim();
+        let age = $("#age").val();
+        let password = $("#password").val();
+        let confirm = $("#confirm").val();
+
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if(name == ""){
+            $("#msg").text("Name is required");
+        }
+
+        else if(!emailPattern.test(email)){
+            $("#msg").text("Enter valid email");
+        }
+
+        else if(age < 18 || age > 60){
+            $("#msg").text("Age must be between 18 and 60");
+        }
+
+        else if(password == ""){
+            $("#msg").text("Password is required");
+        }
+
+        else if(password != confirm){
+            $("#msg").text("Passwords do not match");
+        }
+
+        else{
+            $("#msg").text("Form Submitted Successfully");
+        }
+
+    });
+
+});
+</script>
+
+
+
+</body>
+</html>

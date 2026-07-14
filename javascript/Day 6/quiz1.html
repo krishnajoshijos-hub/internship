@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz App</title>
+</head>
+<body>
+
+<h2>Simple Quiz</h2>
+
+<h3>Time Left : <span id="timer">10:00</span></h3>
+
+<form id="quiz">
+
+<p>1. HTML stands for?</p>
+
+<input type="radio" name="q1" value="1"> Hyper Text Markup Language<br>
+<input type="radio" name="q1" value="0"> High Text Language<br>
+<input type="radio" name="q1" value="0"> Home Tool Language<br>
+
+<hr>
+
+<p>2. JavaScript is?</p>
+
+<input type="radio" name="q2" value="1"> Programming Language<br>
+<input type="radio" name="q2" value="0"> Browser<br>
+<input type="radio" name="q2" value="0"> Database<br>
+
+<hr>
+
+<p>3. CSS is used for?</p>
+
+<input type="radio" name="q3" value="1"> Styling<br>
+<input type="radio" name="q3" value="0"> Database<br>
+<input type="radio" name="q3" value="0"> Compiler<br>
+
+<hr>
+
+<p>4. Which tag is used for image?</p>
+
+<input type="radio" name="q4" value="1"> img<br>
+<input type="radio" name="q4" value="0"> image<br>
+<input type="radio" name="q4" value="0"> picture<br>
+
+<hr>
+
+<p>5. Which symbol is used in id selector?</p>
+
+<input type="radio" name="q5" value="1"> #<br>
+<input type="radio" name="q5" value="0"> .<br>
+<input type="radio" name="q5" value="0"> *<br>
+
+<br>
+
+<button type="button" onclick="submitQuiz()">Submit</button>
+
+</form>
+
+<h2 id="result"></h2>
+
+<script >
+    let time = 600; // 10 Minutes
+
+let timer = setInterval(function () {
+
+    let min = Math.floor(time / 60);
+    let sec = time % 60;
+
+    if (sec < 10) {
+        sec = "0" + sec;
+    }
+
+    document.getElementById("timer").innerHTML = min + ":" + sec;
+
+    time--;
+
+    if (time < 0) {
+
+        clearInterval(timer);
+
+        alert("Time Over");
+
+        submitQuiz();
+
+    }
+
+}, 1000);
+
+
+function submitQuiz() {
+
+    clearInterval(timer);
+
+    let score = 0;
+
+    let answer = document.querySelectorAll("input[type=radio]:checked");
+
+    answer.forEach(function (item) {
+
+        score += Number(item.value);
+
+    });
+
+    document.getElementById("result").innerHTML =
+        "Your Score : " + score + " / 5";
+
+    document.getElementById("quiz").style.display = "none";
+
+}
+</script>
+
+</body>
+</html>

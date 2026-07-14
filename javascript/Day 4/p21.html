@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<table >
+    <tr>
+        <th>Date</th>
+        <th>Month</th>
+        <th>Year</th>
+    </tr>
+    <tr>
+        <td id="day"></td>
+        <td id="mon"></td>
+        <td id="yr"></td>
+    </tr>
+
+    <tr>
+        <th>Hours</th>
+        <th>Minutes</th>
+        <th>Second</th>
+    </tr>
+    <tr>
+        <td id="hh"></td>
+        <td id="mm"></td>
+        <td id="ss"></td>
+    </tr>
+</table>
+
+<script>
+$(document).ready(function () {
+    setInterval(clockShow, 1000);
+});
+
+
+function clockShow() {
+    var cu_time = new Date();
+
+    var date = cu_time.getDate();
+    var month = cu_time.getMonth() + 1;
+    var year = cu_time.getFullYear();
+    var hours = cu_time.getHours();
+    var minutes = cu_time.getMinutes();
+    var second = cu_time.getSeconds();
+
+    $("#day").text(date);
+    $("#mon").text(month);
+    $("#yr").text(year);
+    $("#hh").text(hours);
+    $("#mm").text(minutes);
+    $("#ss").text(second);
+
+    console.log("Date=" + date + " Month=" + month + " Year=" + year +
+        " Hours=" + hours + " Minutes=" + minutes + " Second=" + second);
+}
+</script>
+
+</body>
+</html>

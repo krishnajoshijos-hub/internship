@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+
+
+</head>
+<style>
+    .Calculator{
+        display:grid;
+        width:400px;
+        gap:5px;
+        grid-template-columns: repeat(4,1fr);
+
+    }
+    .Calculator input{
+    grid-column: 1 / 5;
+}
+.full-btn{
+    grid-column:1/5;
+}
+</style>
+<body>
+    <div class="Calculator">
+        <input console="3" type="text">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>/</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>*</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>-</button>
+        <button>.</button>
+        <button>0</button>
+        <button>=</button>
+        <button>+</button>
+        <button class ="full-btn">C</button>
+
+    </div>
+</body>
+</html>

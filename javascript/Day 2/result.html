@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Result</title>
+
+<style>
+body{
+    font-family: Arial;
+}
+
+.container,.Result{
+    width:450px;
+    margin:20px auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table,tr,td,th{
+    border:1px solid black;
+    padding:8px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    font-size:18px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<table>
+
+<tr>
+<td>Student Name</td>
+<td><input type="text" id="Name"></td>
+</tr>
+
+<tr>
+<td>Student ID</td>
+<td><input type="text" id="sid"></td>
+</tr>
+
+<tr>
+<th>Subject Name</th>
+<th>Marks</th>
+</tr>
+
+<tr>
+<td>Math</td>
+<td><input type="number" id="m1"></td>
+</tr>
+
+<tr>
+<td>Physics</td>
+<td><input type="number" id="m2"></td>
+</tr>
+
+<tr>
+<td>English</td>
+<td><input type="number" id="m3"></td>
+</tr>
+
+<tr>
+<td>Science</td>
+<td><input type="number" id="m4"></td>
+</tr>
+
+<tr>
+<td>Arts</td>
+<td><input type="number" id="m5"></td>
+</tr>
+
+<tr>
+<td colspan="2">
+<button onclick="CalculateResult()">Generate Result</button>
+</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="Result">
+
+<table>
+
+<tr>
+<th colspan="2">Result Summary</th>
+</tr>
+
+<tr>
+<td>Student Name</td>
+<td id="rname"></td>
+</tr>
+
+<tr>
+<td>Student ID</td>
+<td id="rid"></td>
+</tr>
+
+<tr>
+<td>Total Marks</td>
+<td id="total"></td>
+</tr>
+
+<tr>
+<td>Percentage</td>
+<td id="per"></td>
+</tr>
+
+<tr>
+<td>Division</td>
+<td id="division"></td>
+</tr>
+
+</table>
+
+</div>
+
+<script>
+
+function CalculateResult(){
+
+let name=document.getElementById("Name").value;
+let id=document.getElementById("sid").value;
+
+let m1=Number(document.getElementById("m1").value);
+let m2=Number(document.getElementById("m2").value);
+let m3=Number(document.getElementById("m3").value);
+let m4=Number(document.getElementById("m4").value);
+let m5=Number(document.getElementById("m5").value);
+
+let total=m1+m2+m3+m4+m5;
+
+let percentage=(total/500)*100;
+
+let division="";
+
+if(percentage>=60){
+    division="First Division";
+}
+else if(percentage>=45){
+    division="Second Division";
+}
+else if(percentage>=33){
+    division="Third Division";
+}
+else{
+    division="Fail";
+}
+
+document.getElementById("rname").innerHTML=name;
+document.getElementById("rid").innerHTML=id;
+document.getElementById("total").innerHTML=total+"/500";
+document.getElementById("per").innerHTML=percentage.toFixed(2)+" %";
+document.getElementById("division").innerHTML=division;
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuary addclass removeclass</title>
+    
+    <style>
+        .box{
+            width: 200px;
+            height: 100px;
+            background: lightgray;
+            line-height:100px;
+            text-align:center;
+        }
+        .red{
+            background: red;
+
+        }
+        .whiteText{
+            color:white;
+        }
+        .round{
+            border-radius: 20px;
+        }
+        .shadow{
+            box-shadow: 0 0 10px black;
+        }
+        .bigText{
+            font-size:24px;
+
+        }
+        .green{
+            background:green;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">Hello</div>
+    <button id="add">Add Class</button>
+    <button id ="remove">Remove Class</button>
+    <button id="green">green clr</button>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+          $("#add").click(function(){
+             $(".box").addClass("red whiteText round shadow bigText");
+             $(".box").removeClass("green");
+          });
+          
+          $("#remove").click(function(){
+            $(".box").removeClass("red whitesxt  round  shadow bigtext");
+            $(".box").removeClass("green");
+
+          });
+          $("#green").click(function(){
+              $(".box").removeClass("red");
+              $(".box").addClass("green");
+          });
+
+
+    </script>
+    
+</body>
+</html>

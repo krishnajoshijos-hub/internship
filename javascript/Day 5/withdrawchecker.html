@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple ATM</title>
+</head>
+<body>
+
+<h2>ATM Withdraw System</h2>
+
+<h3>Balance: ₹<span id="balance">5000</span></h3>
+
+<input type="number" id="amount" placeholder="Enter Amount">
+<button onclick="withdraw()">Withdraw</button>
+
+<p id="msg"></p>
+
+<h3>Today's Transactions (<span id="count">0</span>/5)</h3>
+
+<ul id="history"></ul>
+
+<script>
+
+let balance = 5000;
+let transactionCount = 0;
+
+function withdraw() {
+
+    let amount = Number(document.getElementById("amount").value);
+    let msg = document.getElementById("msg");
+
+    if(transactionCount >= 5){
+        msg.innerHTML = "Daily transaction limit reached.";
+        return;
+    }
+
+    if(amount <= 0){
+        msg.innerHTML = "Enter valid amount.";
+        return;
+    }
+
+    if(amount > balance){
+        msg.innerHTML = "Insufficient Balance.";
+        return;
+    }
+
+    // Withdraw
+    balance -= amount;
+    transactionCount++;
+
+    document.getElementById("balance").innerHTML = balance;
+    document.getElementById("count").innerHTML = transactionCount;
+
+    let li = document.createElement("li");
+    li.innerHTML = "Withdraw ₹" + amount + " | Balance ₹" + balance;
+    document.getElementById("history").appendChild(li);
+
+    msg.innerHTML = "Withdrawal Successful.";
+
+    document.getElementById("amount").value = "";
+}
+
+</script>
+
+</body>
+</html>

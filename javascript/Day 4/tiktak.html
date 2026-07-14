@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        #board{
+            width:306px;
+        }
+
+        .box{
+            width:100px;
+            height:100px;
+            border:1px solid black;
+            float:left;
+            font-size:50px;
+            text-align:center;
+            line-height:100px;
+            cursor:pointer;
+        }
+
+        #msg{
+            clear:both;
+            margin-top:20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Tic Tac Toe</h2>
+
+<div id="board">
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+</div>
+
+<br><br><br>
+
+<h3 id="msg">Player X Turn</h3>
+
+<button id="reset">Restart</button>
+
+<script>
+
+$(document).ready(function(){
+
+    let player="X";
+    let gameOver=false;
+
+    $(".box").click(function(){
+
+        if(gameOver)
+            return;
+
+        if($(this).text()==""){
+
+            $(this).text(player);
+
+            checkWinner();
+
+            if(!gameOver){
+
+                if(player=="X"){
+                    player="O";
+                }
+                else{
+                    player="X";
+                }
+
+                $("#msg").text("Player "+player+" Turn");
+            }
+
+        }
+
+    });
+
+    function checkWinner(){
+
+        let b=$(".box");
+
+        let win=[
+            [0,1,2],
+            [3,4,5],
+            [6,7,8],
+            [0,3,6],
+            [1,4,7],
+            [2,5,8],
+            [0,4,8],
+            [2,4,6]
+        ];
+
+        for(let i=0;i<win.length;i++){
+
+            let a=win[i][0];
+            let c=win[i][1];
+            let d=win[i][2];
+
+            if(
+                b.eq(a).text()!="" &&
+                b.eq(a).text()==b.eq(c).text() &&
+                b.eq(c).text()==b.eq(d).text()
+            ){
+
+                $("#msg").text("🎉 Player "+b.eq(a).text()+" Wins!");
+                gameOver=true;
+                return;
+            }
+
+        }
+
+        let draw=true;
+
+        b.each(function(){
+
+            if($(this).text()==""){
+                draw=false;
+            }
+
+        });
+
+        if(draw){
+
+            $("#msg").text("Game Draw");
+            gameOver=true;
+
+        }
+
+    }
+
+    $("#reset").click(function(){
+
+        $(".box").text("");
+
+        player="X";
+        gameOver=false;
+
+        $("#msg").text("Player X Turn");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
